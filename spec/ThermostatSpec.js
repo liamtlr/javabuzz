@@ -26,8 +26,16 @@ describe ('Thermostat:', function(){
   it('will not allow the temperatue to drop below 10 degrees', function(){
     do { thermostat.decreaseTemperature(); }
     while (thermostat.temperature >= 10);
-    expect(function (){thermostat.decreaseTemperature()}).toThrowError("Temperature cannot drop below 10 degrees");
+    expect(function(){thermostat.decreaseTemperature()}).toThrowError("Temperature cannot drop below 10 degrees");
+  });
 
+  it('is limited to 25 deg if powersaving mode is on', function(){
+    thermostat.turnOnPowerSavingMode();
+    for (var i = 0; i < 5; i++) {
+      thermostat.increaseTemperature();
+    }
+
+    expect(function(){thermostat.increaseTemperature()}).toThrowError("Max temp exceeded in power saving mode");
   });
 
 });

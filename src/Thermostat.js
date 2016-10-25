@@ -2,6 +2,10 @@
 
 function Thermostat(){
   this.temperature = 20;
+  this.powerSavingMode = true;
+  this.maxTemperature = 25;
+  // MAX_TEMPERATURE_WITH_POWER_SAVING_MODE_ON = 25;
+  // MAX_TEMPERATURE_WITH_POWER_SAVING_MODE_OFF = 32;
 }
 
 Thermostat.prototype.getCurrentTemperature = function(){
@@ -9,7 +13,11 @@ Thermostat.prototype.getCurrentTemperature = function(){
 };
 
 Thermostat.prototype.increaseTemperature = function(){
-  this.temperature += 1;
+    if (this.temperature < this.maxTemperature) {     // && this.powerSavingMode == true) {
+      this.temperature += 1;
+    } else {
+      throw new Error("Max temp exceeded in power saving mode");
+    }
 };
 
 Thermostat.prototype.decreaseTemperature = function(){
@@ -18,4 +26,9 @@ Thermostat.prototype.decreaseTemperature = function(){
   } else {
     throw new Error("Temperature cannot drop below 10 degrees");
   }
+};
+
+Thermostat.prototype.turnOnPowerSavingMode = function(){
+  this.powerSavingMode = true;
+  this.maxTemperature = 25;      //MAX_TEMPERATURE_WITH_POWER_SAVING_MODE_ON;
 };
