@@ -43,20 +43,12 @@ function displayPowerSavingStatus() {
 		}
 	};
 
-function gettingJSON(){
-		if ($('#location_input') === false) {
-			city = "london";	
-		} else {
-			city = $('#location_input').text();
-		}
-    $.get("http://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID=d631f9336b0f36782ae2b6e3d513d46e&units=metric", function(data) {$('#weather_display').text(data.name+' - '+ data.main.temp + 'C - ' +data.weather[0].description);
-  });
-}
+$('#change_location_form').submit(function(event){
 
-$('#change_location_button').click(gettingJSON());
-
-
-
-
-
-
+	event.preventDefault();
+	var city = $("#location_input").val();
+	var firstHalf = "http://api.openweathermap.org/data/2.5/weather?q="
+	var secondHalf = "&APPID=d631f9336b0f36782ae2b6e3d513d46e&units=metric"
+	$.get(firstHalf +city+secondHalf, function(data) {$('#weather_display').text(data.name+' - '+ data.main.temp + 'C - ' +data.weather[0].description);
+});
+})
