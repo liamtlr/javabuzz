@@ -24,8 +24,9 @@ describe ('Thermostat:', function(){
   });
 
   it('will not allow the temperatue to drop below 10 degrees', function(){
-    do { thermostat.decreaseTemperature(); }
-    while (thermostat.temperature >= 10);
+    for (var i =0; i < 10; i++) {
+      thermostat.decreaseTemperature();
+    }
     expect(function(){thermostat.decreaseTemperature()}).toThrowError("Temperature cannot drop below 10 degrees");
   });
 
