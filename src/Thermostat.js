@@ -4,6 +4,7 @@ function Thermostat(){
   this.temperature = 20;
   this.powerSavingMode = true;
   this.maxTemperature = 25;
+  this.colour = 'yellow';
   // MAX_TEMPERATURE_WITH_POWER_SAVING_MODE_ON = 25;
   // MAX_TEMPERATURE_WITH_POWER_SAVING_MODE_OFF = 32;
 }
@@ -18,6 +19,7 @@ Thermostat.prototype.increaseTemperature = function(){
     } else {
       throw new Error("Max temp exceeded");
     }
+    this.setThermostatColour();
 };
 
 Thermostat.prototype.decreaseTemperature = function(){
@@ -26,6 +28,7 @@ Thermostat.prototype.decreaseTemperature = function(){
   } else {
     throw new Error("Temperature cannot drop below 10 degrees");
   }
+  this.setThermostatColour();
 };
 
 Thermostat.prototype.turnOnPowerSavingMode = function(){
@@ -41,3 +44,19 @@ Thermostat.prototype.turnOffPowerSavingMode = function() {
 Thermostat.prototype.isPowerSavingModeOn = function() {
   return this.powerSavingMode === true;
 };
+
+Thermostat.prototype.reset = function() {
+  this.temperature = 20;
+};
+
+Thermostat.prototype.setThermostatColour = function() {
+  if (this.temperature < 18) {
+    this.colour = "green"
+  } else if (this.temperature >= 18 && this.temperature < 25){
+    this.colour = "yellow"
+  } else {
+    this.colour = "red"
+  }
+};
+
+// Thermostat.addEventListener(increaseTemperature(), setThermostatColour())

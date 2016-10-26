@@ -51,4 +51,23 @@ describe ('Thermostat:', function(){
     expect( function() {thermostat.increaseTemperature()}).toThrowError("Max temp exceeded")
   });
 
+  it('resets the temperature to 20 degrees when the reset button is used', function(){
+    for (var i = 0; i < 5; i++) {
+      thermostat.increaseTemperature();
+    }
+    thermostat.reset();
+    expect(thermostat.getCurrentTemperature()).toEqual(20);
+  });
+
+  it('displays a green thermostat if the temperature is less than 18 degrees', function(){
+    for (var i = 0; i <= 2; i++) {
+      console.log(thermostat.temperature)
+      thermostat.decreaseTemperature()
+    }
+    console.log(thermostat.temperature)
+    expect(thermostat.colour).toEqual("green");
+  });
+
+
+
 });
