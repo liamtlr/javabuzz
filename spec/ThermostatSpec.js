@@ -35,7 +35,20 @@ describe ('Thermostat:', function(){
       thermostat.increaseTemperature();
     }
 
-    expect(function(){thermostat.increaseTemperature()}).toThrowError("Max temp exceeded in power saving mode");
+    expect(function(){thermostat.increaseTemperature()}).toThrowError("Max temp exceeded");
+  });
+
+  it('turns power saving mode off', function() {
+    thermostat.turnOffPowerSavingMode();
+    expect(thermostat.isPowerSavingModeOn()).toEqual(false);
+  });
+
+  it('is limited to 32 deg if power saving mode is off', function() {
+    thermostat.turnOffPowerSavingMode();
+    for (var i = 0; i < 12; i++) {
+      thermostat.increaseTemperature();
+    }
+    expect( function() {thermostat.increaseTemperature()}).toThrowError("Max temp exceeded")
   });
 
 });
