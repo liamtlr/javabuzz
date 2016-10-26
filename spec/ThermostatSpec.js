@@ -68,6 +68,15 @@ describe ('Thermostat:', function(){
     expect(thermostat.colour).toEqual("green");
   });
 
+  it('displays a yellow thermostat if the temperature is less than 25 but greater than 18', function() {
+    expect(thermostat.colour).toEqual('yellow')
+  });
 
+  it('displays a red thermostat if the temeperature is 25 or greater', function() {
+    for (var i = 0; i < 5; i++) {
+      thermostat.increaseTemperature();
+    }
+    expect(thermostat.colour).toEqual('red');
+  });
 
 });

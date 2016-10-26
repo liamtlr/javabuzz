@@ -59,4 +59,5 @@ Thermostat.prototype.setThermostatColour = function() {
   }
 };
 
-// Thermostat.addEventListener(increaseTemperature(), setThermostatColour())
+// button.addEventListener("click", setThermostatColour())
+
