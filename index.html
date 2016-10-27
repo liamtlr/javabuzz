@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Thermostat</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css" >
+<link href="https://fonts.googleapis.com/css?family=Hammersmith+One|Pontano+Sans" rel="stylesheet">    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="src/Thermostat.js"></script>
+    <script src="src/elements.js"></script>
+    <script src="src/weather.js"></script>
+  </head>
+
+  <body>
+    <textarea id="temperature_display" rows="1" cols="2" disabled></textarea><br />
+    <p id="powerSaving" style="margin: 0px;">PowerSaving is on</p>
+    <button type="button" id="psm_toggle_button">Turn PowerSaving off</button><br /><br />
+    <input id="temperatureSlider" type="range" min="10" max="32" /> <br />
+    <button type="button" id="down_button">-</button>
+    <button type="button" id="up_button">+</button><br />
+    <button type="button" id="reset_button">RESET</button><br />
+
+    <label for="city">
+      Weather for: <input type="text" id="city" placeholder="enter location">
+    </label>
+    <div id="show_weather">
+      <p>The weather in: <span id="city_span"></span></p>
+      <p>The weather is: <span id="current_weather"></span></p>
+      <p>The temperature is: <span id="temperature_outside"></span></p>
+    </div>
+  </body>
+</html>
