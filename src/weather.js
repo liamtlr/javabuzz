@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
   var showWeather = function() {
     if($("#city").val() === ""){
       $("#show_weather").hide();
