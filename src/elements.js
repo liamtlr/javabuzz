@@ -30,4 +30,6 @@ $(document).ready(function() {
     $( "#psm_toggle_button" ).html( "Turn PowerSaving " + notStatus );
     update();
   });
+
+
 });
