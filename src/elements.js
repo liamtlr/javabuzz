@@ -1,10 +1,3 @@
-$(document).ready(function() {
-  var thermostat = new Thermostat();
-  var update = function() {
-    $("#temperature_display").val(thermostat.temperature());
-    $("#temperature_display").css("background-color", thermostat.screenColour());
-  };
-
   update();
 
   $( "#up_button" ).click(function(){
