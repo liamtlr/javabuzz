@@ -3,9 +3,19 @@ $(document).ready(function() {
   var update = function() {
     $("#temperature_display").val(thermostat.temperature());
     $("#temperature_display").css("background-color", thermostat.screenColour());
+    $("#temperatureSlider").val(thermostat.temperature());
   };
 
   update();
+
+  $( "#temperatureSlider").change(function(){
+    if (thermostat.powerSaving() && this.value > 25) {
+      thermostat._temperature = 25;
+    } else {
+      thermostat._temperature = this.value;
+    }
+    update();
+  });
 
   $( "#up_button" ).click(function(){
     thermostat.increaseTemperature();
